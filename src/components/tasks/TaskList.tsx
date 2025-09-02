@@ -3,11 +3,12 @@ import TaskItem from "./TaskItem";
 
 type TaskListProps = {
   tasks: Task[];
-  onUpdateTask: (task: Task) => boolean;
+  onUpdateTask: (task: Partial<Task>) => boolean;
   onDeleteTask: (id: number) => void;
+  onCompletedTask: (id: number) => boolean;
 };
 
-const TaskList = ({ tasks, onUpdateTask, onDeleteTask }: TaskListProps) => {
+const TaskList = ({ tasks, onUpdateTask, onDeleteTask, onCompletedTask }: TaskListProps) => {
   if (tasks.length === 0) {
     return (
       <div className="text-gray-500 text-lg py-12 text-center bg-gray-50 rounded-lg">
@@ -25,7 +26,7 @@ const TaskList = ({ tasks, onUpdateTask, onDeleteTask }: TaskListProps) => {
       </p>
       <ul className="space-y-2">
         {tasks.map((task) => (
-          <TaskItem key={task.id} task={task} onUpdateTask={onUpdateTask} onDeleteTask={onDeleteTask} />
+          <TaskItem key={task.id} task={task} onUpdateTask={onUpdateTask} onDeleteTask={onDeleteTask} onCompletedTask={onCompletedTask} />
         ))}
       </ul>
     </div>
