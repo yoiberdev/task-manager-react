@@ -27,7 +27,6 @@ const TaskItem = ({
     if (success) setIsEditing(false);
   };
 
-
   const getBackgroundClass = () => {
     if (task.completed) {
       return "bg-green-50 border-green-200";
@@ -35,9 +34,8 @@ const TaskItem = ({
     return "bg-white hover:bg-gray-50";
   };
 
-  const getTextClass = () => {
-    return task.completed ? "line-through text-gray-500" : "text-gray-800";
-  };
+  const getTextClass = () =>
+    task.completed ? "line-through text-gray-500" : "text-gray-800";
 
   return (
     <li
@@ -55,7 +53,7 @@ const TaskItem = ({
           onEdit={handleStartEdit}
           onDelete={() => onDeleteTask(task.id)}
           onCompleted={onCompletedTask}
-          textClass={ ()=>getTextClass()}
+          textClass={() => getTextClass()}
         />
       )}
     </li>
