@@ -1,5 +1,8 @@
 import type { Task } from "../../Types/Task";
-import { TASK_FILTERS, type TaskFilter as TaskFilterType } from "../../Types/TaskFilter";
+import {
+  TASK_FILTERS,
+  type TaskFilter as TaskFilterType,
+} from "../../Types/TaskFilter";
 
 type FilterOption = {
   key: TaskFilterType;
@@ -59,7 +62,9 @@ const TaskFilter = ({
             }
           `}
         >
-          <span>{count}</span>
+          <span className="text-xs font-bold min-w-[20px] h-5 flex items-center justify-center rounded-full">
+            {count}
+          </span>
           <span
             className={`px-2 py-1 rounded-full text-xs font-medium
             ${
