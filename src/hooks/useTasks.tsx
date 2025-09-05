@@ -1,8 +1,9 @@
-import { useState } from "react";
 import type { Task } from "../Types/Task";
+import { STORAGE_KEYS } from "../consts/local";
+import useLocalStorage from "./useLocalStorage";
 
 const useTasks = () => {
-  const [tasks, setTasks] = useState<Task[]>([]);
+  const [tasks, setTasks] = useLocalStorage<Task[]>(STORAGE_KEYS, []);
 
   const addTask = (title: string): boolean => {
     const trimmedTitle = title.trim();
@@ -45,10 +46,8 @@ const useTasks = () => {
   const clompetedTask = (id: number) => {
     const taskExisting = findTaskById(id);
     if (!taskExisting) return false;
-    console.log("si llega", tasks);
 
     const newState = !taskExisting.completed;
-    console.log("newstate", newState);
 
     setTasks((prev) =>
       prev.map((task) =>

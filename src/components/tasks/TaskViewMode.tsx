@@ -1,7 +1,7 @@
 import { FiEdit2 } from "react-icons/fi";
 import type { Task } from "../../Types/Task";
 import { Trash } from "lucide-react";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 type TaskViewModeProps = {
   task: Task;
@@ -29,21 +29,19 @@ const TaskViewMode = ({
     setTaskCompleted((prev) => !prev);
   };
 
-  useEffect(() => {
-
-  }, [task])
-
   return (
     <>
       <span className={`flex-1 text-gray-800 ${textClass}`}>{task.title}</span>
       <div className="flex gap-2">
-        <span className="px-2 p-1 text-blue-500 hover:bg-green-50 rounded transition-colors">
+        <label className="px-2 p-1 text-blue-500 hover:bg-green-50 rounded transition-colors cursor-pointer">
           <input
+            id={`task-checkbox-${task.id}`}
             type="checkbox"
             onChange={() => handleCompleted(task.id)}
             checked={taskCompleted}
+            className="cursor-pointer"
           />
-        </span>
+        </label>
         <button
           onClick={onEdit}
           className="px-2 py-1 text-blue-500 hover:bg-blue-50 rounded transition-colors"

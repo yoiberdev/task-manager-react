@@ -19,6 +19,7 @@ const TaskForm = ({ onAddTask }: TaskFormProps) => {
   return (
     <form onClick={handleSubmit} className="space-x-2">
       <input
+        id="new-task-input"
         type="text"
         onChange={(e) => setInputValue(e.target.value)}
         value={inputValue}
